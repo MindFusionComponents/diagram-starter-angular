@@ -1,0 +1,31 @@
+<div class="App">
+  <div class="container">
+    <div class="sidebar-left">
+      <overview [diagramView]="view"></overview>
+      <palette [id]="'palette'" [padding]="4" [theme]="'business'" [height]="'calc(100% - 210px)'">
+        <palette-category [title]="'Flowchart Shapes'" [expanded]="true" [items]="paletteItems"></palette-category>
+        <palette-category [title]="'Data Shapes'" [items]="paletteItems1"></palette-category>
+        <palette-category [title]="'BPMN Shapes'" [items]="paletteItems2"></palette-category>
+      </palette>
+    </div>
+    <div class="main">
+      <zoom-control [diagramView]="view" class="zoom">
+      </zoom-control>
+      <ruler>
+        <diagram-view #view [id]="'diagram'" [diagram]="diagram" [routeLinks]="true" [linkHeadShapeSize]="2"
+          [roundedLinks]="true" [backBrush]="'#e0e9e9'" [linkBackId] = "'mindfusionLink'" (nodeCreated)="onNodeCreated($event)"
+          (linkCreating)="onLinkCreating($event)">
+        </diagram-view>
+      </ruler>
+    </div>
+    <div class="sidebar">
+      <button (click)="onNewClick()">New</button>
+      <button (click)="onSaveClick()">Save</button>
+      <button (click)="onLoadClick()">Load</button>
+    </div>
+
+  </div>
+  <div class="footer">
+    <a id="mindfusionLink" href="https://mindfusion.dev/javascript-diagram.html">h/t MindFusion</a>
+  </div>
+</div>
